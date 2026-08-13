@@ -1,3 +1,4 @@
+import Modal from './components/Modal'
 import Tasks from './components/Tasks'
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
 				<input type='text' placeholder='Search tasks' /> <button>+</button>
 			</div>
 			<Tasks />
+			<Modal />
 		</div>
 	)
 }
