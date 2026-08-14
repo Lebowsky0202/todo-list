@@ -15,7 +15,7 @@ export const tasks = [
 	},
 	{
 		id: 3,
-		name: 'Почистить зубы ',
+		name: 'Прочитать книгу ',
 		description:
 			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam sit repellat reprehenderit vitae accusantium, non nobis, ducimus beatae quae modi dicta odit qui, dolores est aliquid numquam excepturi et nisi.',
 		priority: 3,

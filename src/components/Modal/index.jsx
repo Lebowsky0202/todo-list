@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import cls from './Modal.module.css'
 
-const Modal = () => {
+const Modal = ({ isOpen, isClose }) => {
 	const [name, setName] = useState('')
 
 	function onChange(e) {
@@ -9,7 +9,7 @@ const Modal = () => {
 	}
 
 	return (
-		<div className={cls.modal}>
+		<div className={`${cls.modal} ${isOpen ? cls.active : ''}`}>
 			<h2>Добавление новой задачи</h2>
 			<input
 				type='text'
@@ -18,6 +18,10 @@ const Modal = () => {
 				onChange={onChange}
 			/>
 			<div>{name}</div>
+
+			<button className={cls.btn} onClick={isClose}>
+				Закрыть модальное окно
+			</button>
 		</div>
 	)
 }
