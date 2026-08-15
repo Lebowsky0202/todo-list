@@ -1,23 +1,35 @@
 import { useState } from 'react'
+import { tasks } from '../../data/tasks'
 import cls from './Modal.module.css'
 
 const Modal = ({ isOpen, isClose }) => {
 	const [name, setName] = useState('')
+	function handleSubmit(event) {
+		event.preventDefault()
 
-	function onChange(e) {
-		setName(e.target.value)
+		const newTask = {
+			id: crypto.randomUUID(),
+			name,
+		}
+		tasks.push(newTask)
+
+		setName('')
 	}
 
 	return (
 		<div className={`${cls.modal} ${isOpen ? cls.active : ''}`}>
 			<h2>Добавление новой задачи</h2>
-			<input
-				type='text'
-				placeholder='Название задачи'
-				value={name}
-				onChange={onChange}
-			/>
-			<div>{name}</div>
+			<form onSubmit={handleSubmit}>
+				<input
+					type='text'
+					placeholder='Название задачи'
+					value={name}
+					onChange={event => setName(event.target.value)}
+				/>
+				<button className={cls.btn} type='submit'>
+					Добавить
+				</button>
+			</form>
 
 			<button className={cls.btn} onClick={isClose}>
 				Закрыть модальное окно
