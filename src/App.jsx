@@ -1,9 +1,18 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Modal from './components/Modal'
 import Tasks from './components/Tasks'
 
 function App() {
 	const [isOpen, setIsOpen] = useState(false)
+	const [tasks, setTasks] = useState(() => {
+		const savedTasks = localStorage.getItem('tasks')
+
+		return savedTasks ? JSON.parse(savedTasks) : []
+	})
+
+	useEffect(() => {
+		localStorage.setItem('tasks', JSON.stringify(tasks))
+	}, [tasks])
 
 	return (
 		<div>
@@ -12,8 +21,13 @@ function App() {
 				<input type='text' placeholder='Search tasks' />
 				<button onClick={() => setIsOpen(true)}>+</button>
 			</div>
-			<Tasks />
-			<Modal isOpen={isOpen} isClose={() => setIsOpen(false)} />
+			<Tasks tasks={tasks} setTasks={setTasks} />
+			<Modal
+				isOpen={isOpen}
+				isClose={() => setIsOpen(false)}
+				tasks={tasks}
+				setTasks={setTasks}
+			/>
 		</div>
 	)
 }

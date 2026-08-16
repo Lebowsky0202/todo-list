@@ -1,9 +1,10 @@
 import { useState } from 'react'
-import { tasks } from '../../data/tasks'
+// import { tasks } from '../../data/tasks'
 import cls from './Modal.module.css'
 
-const Modal = ({ isOpen, isClose }) => {
+const Modal = ({ isOpen, isClose, setTasks }) => {
 	const [name, setName] = useState('')
+
 	function handleSubmit(event) {
 		event.preventDefault()
 
@@ -11,9 +12,13 @@ const Modal = ({ isOpen, isClose }) => {
 			id: crypto.randomUUID(),
 			name,
 		}
-		tasks.push(newTask)
 
-		setName('')
+		setTasks(prevTask => [...prevTask, newTask])
+		console.log(setTasks)
+
+		// tasks.push(newTask)
+
+		// setName('')
 	}
 
 	return (

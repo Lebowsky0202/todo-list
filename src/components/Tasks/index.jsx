@@ -1,7 +1,7 @@
-import { tasks } from '../../data/tasks'
+// import { tasks } from '../../data/tasks'
 import cls from './Tasks.module.css'
 
-const Tasks = () => {
+const Tasks = ({ tasks }) => {
 	{
 		return (
 			<div className={cls.tasks}>
