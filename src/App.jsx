@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import Modal from './components/Modal'
+import Search from './components/Search'
 import Tasks from './components/Tasks'
 
 function App() {
@@ -17,10 +18,7 @@ function App() {
 	return (
 		<div>
 			<h1>To Do List</h1>
-			<div>
-				<input type='text' placeholder='Search tasks' />
-				<button onClick={() => setIsOpen(true)}>+</button>
-			</div>
+			<Search setIsOpen={setIsOpen} />
 			<Tasks tasks={tasks} setTasks={setTasks} />
 			<Modal
 				isOpen={isOpen}
