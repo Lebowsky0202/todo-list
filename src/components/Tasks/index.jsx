@@ -7,7 +7,7 @@ const Tasks = ({ tasks }) => {
 			<div className={cls.tasks}>
 				{tasks.map(item => {
 					return (
-						<div key={item.id}>
+						<div className={cls.task} key={item.id}>
 							<input type='checkbox' name='isComplited' />
 							{item.name}
 						</div>
