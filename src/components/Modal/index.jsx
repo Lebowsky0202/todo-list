@@ -11,14 +11,11 @@ const Modal = ({ isOpen, isClose, setTasks }) => {
 		const newTask = {
 			id: crypto.randomUUID(),
 			name,
+			completeTask: false,
 		}
 
 		setTasks(prevTask => [...prevTask, newTask])
 		console.log(setTasks)
-
-		// tasks.push(newTask)
-
-		// setName('')
 	}
 
 	return (
